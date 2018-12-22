@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -I nixpkgs=../../nix --packages expo-cli git yarn -i bash
+#!nix-shell -I nixpkgs=../../nix --packages nodejs-10_x git yarn -i bash
 
 set -eo pipefail
 
@@ -23,5 +23,5 @@ export EXPO_DEBUG=true
 export EXPO_SKIP_MANIFEST_VALIDATION_TOKEN=true
 export EXPO_NO_DOCTOR=true
 
-expo login --username "$EXPO_CI_ACCOUNT_USERNAME" --password "$EXPO_CI_ACCOUNT_PASSWORD"
-expo publish --release-channel "$channel"
+npx expo-cli login --username "$EXPO_CI_ACCOUNT_USERNAME" --password "$EXPO_CI_ACCOUNT_PASSWORD"
+npx expo-cli publish --release-channel "$channel"
